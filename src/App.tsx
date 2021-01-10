@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
       padding: "2vh 0.5rem",
     },
     flexDirection: "column",
-    height: "100vh",
+    minHeight: "100vh",
     background: `url(${mm})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",

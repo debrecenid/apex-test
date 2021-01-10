@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "1%",
     width: "10rem",
     background: "#ccc",
+    color: "black",
   },
 }));
 
@@ -75,7 +76,7 @@ const Movie: React.FC<Props> = ({ row, setRelatedParam }) => {
         </Box>
         {wikiUrl && (
           <Link target="_blank" href={wikiUrl}>
-            Wiki
+            Wikipedia
           </Link>
         )}
         <Button
@@ -83,6 +84,7 @@ const Movie: React.FC<Props> = ({ row, setRelatedParam }) => {
           onClick={handleRelatedSearch}
           variant="contained"
           type="button"
+          color="secondary"
         >
           Related
         </Button>

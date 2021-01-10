@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
     outline: "none",
     paddingLeft: "5%",
+    fontSize:'1rem',
   },
   button: {
     flex: "20%",
