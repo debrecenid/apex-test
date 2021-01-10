@@ -1,6 +1,14 @@
+## Awesome movie finder
+Its just a demo project, where you can search your favourite movie, get some info from wikipedia, and able to find similar movies.
+### Live demo: [here](https://awesome-movie-finder.web.app/)
 
+## For local testing:<br />
+1 `https://github.com/debrecenid/apex-test.git` <br />
+2 `yarn install` <br />
 
-## Available Scripts
+Then run one of the following script:
+
+### Available Scripts
 
 In the project directory, you can run:
 
