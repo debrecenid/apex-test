@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
 interface Props {
   setQuery: (value: string) => void;
 }
-
 const Search: React.FC<Props> = ({ setQuery }) => {
   const classes = useStyles();
 
@@ -65,11 +64,17 @@ const Search: React.FC<Props> = ({ setQuery }) => {
         onSubmit={handleSearch}
       >
         <input
+          data-testid="search-input"
           name="name"
           className={classes.input}
           placeholder="Search for a movie..."
         />
-        <Button className={classes.button} variant="contained" type="submit">
+        <Button
+          data-testid="search-button"
+          className={classes.button}
+          variant="contained"
+          type="submit"
+        >
           Search
         </Button>
       </form>

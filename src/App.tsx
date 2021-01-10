@@ -26,11 +26,15 @@ const App: React.FC = () => {
   const classes = useStyles();
   const [searchParam, setSearchParam] = useState("");
   const [relatedParam, setRelatedParam] = useState<null | string[]>(null);
+
+  // Handle the search param change, and set back the related to null
   const handleSearch = (val: string) => {
     setSearchParam(val);
     setRelatedParam(null);
   };
+
   let movileListContent;
+  //If the realted param is not null we show the related moves
   if (relatedParam) {
     movileListContent = (
       <MovieList

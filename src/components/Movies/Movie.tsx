@@ -51,6 +51,7 @@ const Movie: React.FC<Props> = ({ row, setRelatedParam }) => {
   const [wiki, setWiki] = useState();
   const [wikiUrl, setwikiUrl] = useState();
 
+  // Handle the collapse, and calling the wikipedia fetch method.
   const handleOpen = async () => {
     setOpen((prevstate) => !prevstate);
     const wikiData: any = await fetchWiki(row.name);
@@ -58,6 +59,7 @@ const Movie: React.FC<Props> = ({ row, setRelatedParam }) => {
     setwikiUrl(wikiData.link);
   };
 
+  // Set the keyword id-s to the related params, and trigger the realted movies search.
   const handleRelatedSearch = () => {
     const keyWordIds = row.keywords.map((keyWord) => keyWord.id);
     setRelatedParam(keyWordIds);
