@@ -1,3 +1,5 @@
+import { gql } from "@apollo/client";
+
 export const fetchWiki = async (name: string) => {
   let url = "https://en.wikipedia.org/w/api.php";
   const params: any = {
@@ -20,15 +22,64 @@ export const fetchWiki = async (name: string) => {
         `https://en.wikipedia.org/api/rest_v1/page/summary/${wikiPath}`
       )
     ).json();
-    return wikiResult.extract;
+    return {
+      link: `https://en.wikipedia.org/wiki/${wikiPath}`,
+      desc: wikiResult.extract,
+    };
   } catch (error) {
     if (error instanceof TypeError) {
-      //If the movie dont have a wiki page then the link in the response is undefined, so the split gives a typeError
-      return "Wikipedia page not found!";
+      return { desc: "Wikipedia page not found!", link: "" };
     } else {
       console.log(error);
+      return { desc: "Error when fetching wikipedia!", link: "" };
     }
   }
 };
 
-export {};
+export const SEARCH_MOVIES = gql`
+  query SearchMovies($query: String!) {
+    result: searchMovies(query: $query) {
+      id
+      name
+      score
+      votes
+      budget
+      releaseDate
+      keywords {
+        name
+        id
+      }
+      socialMedia {
+        imdb
+      }
+      poster {
+        original
+      }
+    }
+  }
+`;
+export const SEARCH_RELATED_MOVIES = gql`
+  query DiscoverMovies($query: [ID!]) {
+    result: discoverMovies(
+      filter: { withKeywords: { include: $query, includeLogic: OR } }
+    ) {
+      id
+      name
+      score
+      votes
+      status
+      budget
+      releaseDate
+      keywords {
+        name
+        id
+      }
+      socialMedia {
+        imdb
+      }
+      poster {
+        original
+      }
+    }
+  }
+`;

@@ -3,14 +3,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import MovieList from "./components/Movies/MovieList";
 import Search from "./components/Search/Search";
 import mm from "./assets/images/mm.png";
+import { SEARCH_MOVIES, SEARCH_RELATED_MOVIES } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "flex-start",
     padding: "5vh 10vw",
-    [theme.breakpoints.down("md")]: {
-      padding: "2vh 5vw",
+    [theme.breakpoints.down("xs")]: {
+      padding: "2vh 0.5rem",
     },
     flexDirection: "column",
     height: "100vh",
@@ -22,12 +23,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const App: React.FC = () => {
-  const [query, setQuery] = useState(null);
   const classes = useStyles();
+  const [searchParam, setSearchParam] = useState("");
+  const [relatedParam, setRelatedParam] = useState<null | string[]>(null);
+  const handleSearch = (val: string) => {
+    setSearchParam(val);
+    setRelatedParam(null);
+  };
+  let movileListContent;
+  if (relatedParam) {
+    movileListContent = (
+      <MovieList
+        searchQuery={SEARCH_RELATED_MOVIES}
+        param={relatedParam}
+        setRelatedParam={setRelatedParam}
+      />
+    );
+  } else if (searchParam) {
+    movileListContent = (
+      <MovieList
+        searchQuery={SEARCH_MOVIES}
+        param={searchParam}
+        setRelatedParam={setRelatedParam}
+      />
+    );
+  }
   return (
     <div className={classes.root}>
-      <Search setQuery={setQuery} />
-      {query && <MovieList query={query} />}
+      <Search setQuery={handleSearch} />
+      {movileListContent}
     </div>
   );
 };

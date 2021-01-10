@@ -1,7 +1,7 @@
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import dog2 from "../../assets/images/dog2.png";
+import dog from "../../assets/images/dog.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,16 +43,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Search: React.FC<any> = (props) => {
+interface Props {
+  setQuery: (value: string) => void;
+}
+
+const Search: React.FC<Props> = ({ setQuery }) => {
   const classes = useStyles();
+
   const handleSearch = (event: any) => {
     event.preventDefault();
     const { name } = event.target.elements;
-    props.setQuery(name.value);
+    setQuery(name.value);
   };
   return (
     <div className={classes.root}>
-      <img src={dog2} alt="" className={classes.logo} />
+      <img src={dog} alt="dogoo" className={classes.logo} />
       <form
         className={classes.form}
         noValidate

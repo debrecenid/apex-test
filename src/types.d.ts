@@ -3,9 +3,11 @@ export type MovieType = {
   keywords: KeyWord[];
   name: string;
   score: number;
-  status: string;
+  budget: number;
   socialMedia: { imdb: string };
+  poster: { original: string };
   votes: number;
+  releaseDate: string;
 };
 
 export type KeyWord = {
