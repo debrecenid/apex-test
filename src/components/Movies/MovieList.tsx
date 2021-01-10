@@ -20,6 +20,10 @@ const useStyles = makeStyles({
   error: {
     color: "white",
   },
+  paper: {
+    overflow: "auto",
+    maxHeight:'60vh'
+  },
 });
 
 interface Props {
@@ -46,7 +50,7 @@ const MovieList: React.FC<Props> = ({
     return <Box className={classes.error}>`Error! ${error.message}`;</Box>;
 
   return (
-    <Paper>
+    <Paper className={classes.paper}>
       <TableContainer>
         <Table aria-label="collapsible table">
           <TableHead>

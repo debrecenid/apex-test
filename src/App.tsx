@@ -14,12 +14,11 @@ const useStyles = makeStyles((theme) => ({
       padding: "2vh 0.5rem",
     },
     flexDirection: "column",
-    minHeight: "100vh",
+    height: "100vh",
     background: `url(${mm})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
     backgroundSize: "cover",
-    overflow: "scroll",
   },
 }));
 const App: React.FC = () => {
